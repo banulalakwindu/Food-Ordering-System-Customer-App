@@ -6,7 +6,7 @@ import FoodPart from '../components/FoodPart'
 
 const Foods = () => {
     return (
-        <div className='bg-dark vh-100'>
+        <div className='bg-dark'>
             <Sidebar />
             <SidebarSize />
             <div className="right-side d-flex flex-column text-warning">
@@ -14,7 +14,9 @@ const Foods = () => {
                     <h4 className='me-4 mt-2'><FaMagnifyingGlass /></h4>
                     <input className='bg-secondary text-warning outline-none rounded-5' type="text" placeholder="Search" />
                 </div> */}
-                <div className="food-part ms-5 me-5 mt-5 ps-0 ps-xl-5">
+
+                <div className="d-flex flex-column food-part ms-5 me-5 mt-5 ps-0 ps-xl-5">
+                    <h1 className='mx-auto mb-5'>Select Your Favourite Foods</h1>
                     <FoodPart />
                 </div>
             </div>

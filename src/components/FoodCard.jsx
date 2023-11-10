@@ -8,7 +8,8 @@ function FoodCard({ foodId, foodImage, foodName, foodPrice }) {
                 <Card.Img variant="top" src={foodImage} />
                 <Card.Body>
                     <Card.Title className='text-warning'>{foodName}</Card.Title>
-                    <Card.Text>Rs. {foodPrice}.00</Card.Text>
+                    <small>Starting From,</small>
+                    <h4>Rs. {foodPrice}.00</h4>
                 </Card.Body>
             </Card>
         </Link>
