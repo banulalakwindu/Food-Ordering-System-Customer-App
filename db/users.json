@@ -1,0 +1,75 @@
+[
+    {
+        "userId": "1",
+        "name": "Banula Lakwindu",
+        "email": "banulalakwindu10@gmail.com",
+        "pnumber": "0702686990",
+        "address": "104/2/B, Pitakumbura Rd, Gonakumbura, Ratnapura",
+        "password": "ABCD1234",
+        "cart": [
+            {
+                "cartitemId": "1",
+                "foodId": "1",
+                "name": "Chicken Fried Rice",
+                "type": "Fried Rice",
+                "quantity": 2,
+                "addons": [
+                    {
+                        "name": "Chicken",
+                        "price": "50"
+                    },
+                    {
+                        "name": "Egg",
+                        "price": "30"
+                    }
+                ]
+            }
+        ],
+        "orders": [
+            {
+                "orderId": "1",
+                "items": [
+                    {
+                        "foodId": "1",
+                        "name": "Chicken Fried Rice",
+                        "type": "Fried Rice",
+                        "quantity": 2,
+                        "addons": [
+                            {
+                                "name": "Chicken",
+                                "price": "50"
+                            },
+                            {
+                                "name": "Egg",
+                                "price": "30"
+                            }
+                        ]
+                    }
+                ],
+                "orderTime": "2023-11-17T12:30:00Z"
+            },
+            {
+                "orderId": "2",
+                "items": [
+                    {
+                        "foodId": "2",
+                        "name": "Vegetable Biryani",
+                        "type": "Biryani",
+                        "quantity": 1,
+                        "addons": [
+                            {
+                                "name": "Mixed Vegetables",
+                                "price": "40"
+                            },
+                            {
+                                "name": "Paneer",
+                                "price": "60"
+                            }
+                        ]
+                    }
+                ],
+                "orderTime": "2023-11-17T14:45:00Z"
+            }
+        ]
+    }
+]

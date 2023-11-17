@@ -32,8 +32,8 @@ const Profile = () => {
                     <div className="d-flex flex-column">
                         <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" width="150vw" className="avatar rounded-circle mx-auto mb-3" />
                         <div className="d-flex justify-content-start">
-                            <Button variant="warning" className="m-2">My Orders</Button>
-                            <Button variant="warning" className="m-2">My Cart</Button></div></div>
+                            <Button variant="warning" className="m-2" href='/orders'>My Orders</Button>
+                            <Button variant="warning" className="m-2" href='/cart'>My Cart</Button></div></div>
                     <div className="d-flex flex-column align-items-center ms-md-3 w-100">
                         <Form data-bs-theme="dark" className="mt-md-0 mx-0 ms-md-5 mx-auto w-75">
                             <Form.Group className="mb-3 d-flex flex-column" controlId="formBasicEmail">

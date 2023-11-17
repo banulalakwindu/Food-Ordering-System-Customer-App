@@ -1,0 +1,77 @@
+[
+    {
+        "foodId": "1",
+        "name": "Chicken Fried Rice",
+        "type": "Fried Rice",
+        "halfprice": "450",
+        "fullprice": "600",
+        "addons": [
+            {
+                "name": "Chicken",
+                "price": "50"
+            },
+            {
+                "name": "Egg",
+                "price": "30"
+            },
+            {
+                "name": "Prawn",
+                "price": "80"
+            },
+            {
+                "name": "Fish",
+                "price": "70"
+            }
+        ]
+    },
+    {
+        "foodId": "2",
+        "name": "Vegetable Fried Rice",
+        "type": "Fried Rice",
+        "halfprice": "300",
+        "fullprice": "450",
+        "addons": [
+            {
+                "name": "Chicken",
+                "price": "50"
+            },
+            {
+                "name": "Egg",
+                "price": "30"
+            },
+            {
+                "name": "Prawn",
+                "price": "80"
+            },
+            {
+                "name": "Fish",
+                "price": "70"
+            }
+        ]
+    },
+    {
+        "foodId": "3",
+        "name": "Chicken Kottu",
+        "type": "Kottu",
+        "halfprice": "300",
+        "fullprice": "450",
+        "addons": [
+            {
+                "name": "Chicken",
+                "price": "50"
+            },
+            {
+                "name": "Egg",
+                "price": "30"
+            },
+            {
+                "name": "Prawn",
+                "price": "80"
+            },
+            {
+                "name": "Fish",
+                "price": "70"
+            }
+        ]
+    }
+]
