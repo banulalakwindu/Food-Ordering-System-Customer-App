@@ -5,15 +5,10 @@ import ChickenFriedRice from '../public/img/home_bg.jpg';
 
 function FoodPart() {
     return (
-        <Accordion defaultActiveKey="0" data-bs-theme="dark">
+        <Accordion data-bs-theme="dark">
             <Accordion.Item eventKey="0">
                 <Accordion.Header>Fried Rice</Accordion.Header>
                 <Accordion.Body className='row row-cols-2 mx-auto'>
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
                     <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
                     <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
                     <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />

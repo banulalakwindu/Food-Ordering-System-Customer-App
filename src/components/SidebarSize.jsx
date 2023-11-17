@@ -17,17 +17,17 @@ function SidebarSize() {
                 <FaBars />
             </Button>
 
-            <Offcanvas show={show} onHide={handleClose}>
-                {/* <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-                </Offcanvas.Header> */}
+            <Offcanvas className="text-warning" show={show} onHide={handleClose}>
+                <Offcanvas.Header closeButton>
+                    {/* <Offcanvas.Title>Offcanvas</Offcanvas.Title> */}
+                </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div className="d-flex flex-column h-100 sidebarsize">
                         <Link className='d-flex px-5 my-5 align-items-center menu-item mx-auto' to={'/profile'}><FaCircleUser className="display-1" /></Link>
                         <div className="h-100 d-flex flex-column text-warning">
                             <Link className='d-flex px-5 h-100 align-items-center menu-item mx-auto' to={'/'}><FaHouse className="me-2" />Home</Link>
                             <Link className='d-flex px-5 h-100 align-items-center menu-item mx-auto' to={'/foods'}><FaBowlRice className="me-2" />Foods</Link>
-                            <Link className='d-flex px-5 h-100 align-items-center menu-item mx-auto' to={'/'}><FaCartShopping className="me-2" />Cart</Link>
+                            <Link className='d-flex px-5 h-100 align-items-center menu-item mx-auto' to={'/cart'}><FaCartShopping className="me-2" />Cart</Link>
                             <Link className='d-flex px-5 h-100 align-items-center menu-item mx-auto' to={'/about'}><FaCircleInfo className="me-2" />AboutUs</Link>
                         </div>
                     </div>

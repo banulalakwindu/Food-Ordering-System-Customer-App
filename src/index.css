@@ -18,7 +18,7 @@ body {
 .bg-dark {
     background-color: #000000e6 !important;
     min-height: 100vh !important;
-    height: fit-content !important;
+    height: max-content !important;
 }
 
 .sidebar {
@@ -98,4 +98,9 @@ body {
 .form-check-input:checked {
     background-color: #fecb00 !important;
     border-color: #fecb00 !important;
+}
+
+.btn-close {
+    background-color: #fecb00 !important;
+    border-radius: 50% !important;
 }

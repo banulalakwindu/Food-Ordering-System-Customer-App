@@ -9,7 +9,7 @@ const Sidebar = () => {
             <div className="flex-column">
                 <Link className='d-flex px-5 h-100 align-items-center menu-item' to={'/'}><FaHouse className="me-2" />Home</Link>
                 <Link className='d-flex px-5 h-100 align-items-center menu-item' to={'/foods'}><FaBowlRice className="me-2" />Foods</Link>
-                <Link className='d-flex px-5 h-100 align-items-center menu-item' to={'/'}><FaCartShopping className="me-2" />Cart</Link>
+                <Link className='d-flex px-5 h-100 align-items-center menu-item' to={'/cart'}><FaCartShopping className="me-2" />Cart</Link>
                 <Link className='d-flex px-5 h-100 align-items-center menu-item' to={'/about'}><FaCircleInfo className="me-2" />AboutUs</Link>
             </div>
         </div>
