@@ -5,11 +5,24 @@ import { Button } from 'react-bootstrap'
 import { MdDeleteForever } from "react-icons/md";
 import { Form } from 'react-bootstrap'
 
-const Cart = () => {
+const Cart = ({ isLoggedIn }) => {
+
+    if (!isLoggedIn) {
+        return (
+            <div className='bg-dark d-flex'>
+                <Sidebar isLoggedIn={isLoggedIn} />
+                <SidebarSize isLoggedIn={isLoggedIn} />
+                <div className="d-flex flex-column p-5 text-center m-auto ">
+                    <h2 className='mx-auto text-white mt-auto mb-4'>View Your Cart After Login</h2>
+                    <Button href='/login' variant='outline-warning w-md-25 w-50 mx-auto mb-auto'>Go to Login</Button>
+                </div>
+            </div>
+        );
+    }
     return (
         <div className='bg-dark'>
-            <Sidebar />
-            <SidebarSize />
+            <Sidebar isLoggedIn={isLoggedIn} />
+            <SidebarSize isLoggedIn={isLoggedIn} />
             <div className="right-side d-flex flex-column text-warning">
                 <div className="d-flex flex-column ms-md-5 me-md-5 mt-5 ps-0 ps-xl-5">
                     <h1 className='mx-auto mb-5'>My Cart</h1>

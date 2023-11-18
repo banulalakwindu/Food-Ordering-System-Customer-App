@@ -3,6 +3,7 @@
         "foodId": "1",
         "name": "Chicken Fried Rice",
         "type": "Fried Rice",
+        "image": "chicken_fried_rice.jpg",
         "halfprice": "450",
         "fullprice": "600",
         "addons": [
@@ -28,6 +29,7 @@
         "foodId": "2",
         "name": "Vegetable Fried Rice",
         "type": "Fried Rice",
+        "image": "chicken_fried_rice.jpg",
         "halfprice": "300",
         "fullprice": "450",
         "addons": [
@@ -53,6 +55,7 @@
         "foodId": "3",
         "name": "Chicken Kottu",
         "type": "Kottu",
+        "image": "chicken_fried_rice.jpg",
         "halfprice": "300",
         "fullprice": "450",
         "addons": [

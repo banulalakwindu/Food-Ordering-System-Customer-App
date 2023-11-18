@@ -3,10 +3,10 @@ import FoodCarousel from "../components/FoodCarousel";
 import Logo from "../public/img/logo.png"
 import SidebarSize from "../components/SidebarSize";
 
-const Home = () => {
+const Home = ({ isLoggedIn }) => {
   return <div className="d-flex vh-100 home position-relative">
-    <Sidebar />
-    <SidebarSize />
+    <Sidebar isLoggedIn={isLoggedIn} />
+    <SidebarSize isLoggedIn={isLoggedIn} />
     <div className="d-flex flex-column bg-dark w-100 right-side">
       <div className="d-flex flex-column  mb-2 align-items-center justify-content-around vh-100" >
         <div className="d-flex mt-sm-5 flex-sm-row flex-column align-items-center">

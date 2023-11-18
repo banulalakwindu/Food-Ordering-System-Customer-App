@@ -5,15 +5,19 @@ import Form from 'react-bootstrap/Form';
 import { Button } from "react-bootstrap";
 import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
-const FoodDetails = () => {
+const FoodDetails = ({ isLoggedIn }) => {
     const { foodId } = useParams(); // Access the foodId parameter
     const navigate = useNavigate();
 
+
+
     return (
         <div className="bg-dark">
-            <Sidebar />
-            <SidebarSize />
+            <Sidebar isLoggedIn={isLoggedIn} />
+            <SidebarSize isLoggedIn={isLoggedIn} />
             <div className="right-side d-flex flex-column ms-5 pt-5 ps-0 ps-xl-5">
                 <h2 className="text-warning mb-4 ms-xl-5 mx-auto">Chicken Fried Rice</h2>
                 <div className="d-flex flex-md-row flex-column ms-xl-5">
@@ -35,7 +39,11 @@ const FoodDetails = () => {
                             <Form.Label className="text-warning mt-4">Quantity</Form.Label>
                             <Form.Control type="number" placeholder="Enter Quantity" min={1} />
                             <p className="text-warning mt-4">Price: Rs. 450.00</p>
-                            <button className="btn btn-warning">Add to Cart</button>
+                            {!isLoggedIn ? (
+                                <Button href="/login" className="btn btn-warning">Login to Buy</Button>
+                            ) : (
+                                <Button className="btn btn-warning">Add to Cart</Button>
+                            )}
                         </Form.Group>
                     </Form>
                 </div>

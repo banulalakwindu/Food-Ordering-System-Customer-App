@@ -3,9 +3,10 @@ import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
 import { Button, Form } from 'react-bootstrap'
 import { useState } from 'react'
+import { useEffect } from 'react'
 import { FaPenToSquare } from "react-icons/fa6";
 
-const Profile = () => {
+const Profile = ({ isLoggedIn }) => {
     const [name, setName] = useState('Banula Lakwindu');
     const [phone, setPhone] = useState('0771234567');
     const [address, setAddress] = useState('No. 23, Church Road, Ratnapura');
@@ -22,10 +23,23 @@ const Profile = () => {
         setAddress(event.target.value);
     };
 
+    if (!isLoggedIn) {
+        return (
+            <div className='bg-dark d-flex'>
+                <Sidebar isLoggedIn={isLoggedIn} />
+                <SidebarSize isLoggedIn={isLoggedIn} />
+                <div className="d-flex flex-column p-5 text-center m-auto ">
+                    <h2 className='mx-auto text-white mt-auto mb-4'>View Your Account After Login</h2>
+                    <Button href='/login' variant='outline-warning w-md-25 w-50 mx-auto mb-auto'>Go to Login</Button>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className='bg-dark'>
-            <Sidebar />
-            <SidebarSize />
+            <Sidebar isLoggedIn={isLoggedIn} />
+            <SidebarSize isLoggedIn={isLoggedIn} />
             <div className="right-side d-flex flex-column text-warning p-5">
                 <h1 className="text-center">Profile</h1>
                 <div className="d-flex flex-column align-items-center flex-md-row ms-md-5 ps-md-5 w-100">
@@ -57,6 +71,7 @@ const Profile = () => {
             </div>
         </div>
     )
+
 }
 
 export default Profile

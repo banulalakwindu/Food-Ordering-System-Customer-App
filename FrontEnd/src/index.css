@@ -104,3 +104,7 @@ body {
     background-color: #fecb00 !important;
     border-radius: 50% !important;
 }
+
+.err h1 {
+    font-size: 80px !important;
+}

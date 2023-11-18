@@ -6,7 +6,8 @@
         "pnumber": "0702686990",
         "address": "104/2/B, Pitakumbura Rd, Gonakumbura, Ratnapura",
         "password": "ABCD1234",
-        "cart": [
+        "image": "banu.jpg",
+        "cartitems": [
             {
                 "cartitemId": "1",
                 "foodId": "1",

@@ -4,11 +4,11 @@ import SidebarSize from '../components/SidebarSize'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
 import FoodPart from '../components/FoodPart'
 
-const Foods = () => {
+const Foods = ({ isLoggedIn }) => {
     return (
         <div className='bg-dark'>
-            <Sidebar />
-            <SidebarSize />
+            <Sidebar isLoggedIn={isLoggedIn} />
+            <SidebarSize isLoggedIn={isLoggedIn} />
             <div className="right-side d-flex flex-column text-warning">
                 {/* <div className="search-bar d-flex mt-5 mx-auto bg-secondary rounded-5 px-3">
                     <h4 className='me-4 mt-2'><FaMagnifyingGlass /></h4>

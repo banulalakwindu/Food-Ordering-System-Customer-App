@@ -3,11 +3,11 @@ import Sidebar from "../components/Sidebar";
 import SidebarSize from "../components/SidebarSize";
 import Logo from "../public/img/logo.png";
 
-const About = () => {
+const About = ({ isLoggedIn }) => {
   return (
     <div className='bg-dark'>
-      <Sidebar />
-      <SidebarSize />
+      <Sidebar isLoggedIn={isLoggedIn} />
+      <SidebarSize isLoggedIn={isLoggedIn} />
       <div className="right-side d-flex flex-column text-warning ms-md-5 me-md-4">
         <h1 className="mx-auto mt-5">About Us</h1>
         <img src={Logo} width={200} height={200} alt="logo" className="mx-auto mt-4" />

@@ -2,14 +2,25 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
 import { Button } from 'react-bootstrap'
-import { MdDeleteForever } from "react-icons/md";
-import { Form } from 'react-bootstrap'
 
-const Orders = () => {
+const Orders = ({ isLoggedIn }) => {
+
+    if (!isLoggedIn) {
+        return (
+            <div className='bg-dark d-flex'>
+                <Sidebar isLoggedIn={isLoggedIn} />
+                <SidebarSize isLoggedIn={isLoggedIn} />
+                <div className="d-flex flex-column p-5 text-center m-auto ">
+                    <h2 className='mx-auto text-white mt-auto mb-4'>View Your Orders After Login</h2>
+                    <Button href='/login' variant='outline-warning w-md-25 w-50 mx-auto mb-auto'>Go to Login</Button>
+                </div>
+            </div>
+        );
+    }
     return (
         <div className='bg-dark'>
-            <Sidebar />
-            <SidebarSize />
+            <Sidebar isLoggedIn={isLoggedIn} />
+            <SidebarSize isLoggedIn={isLoggedIn} />
             <div className="right-side d-flex flex-column text-warning">
                 <div className="d-flex flex-column ms-md-5 me-md-5 mt-5 ps-0 ps-xl-5">
                     <h1 className='mx-auto mb-5'>My Orders</h1>
@@ -39,7 +50,7 @@ const Orders = () => {
                                 <td>1000</td>
                                 <td><p className='mb-1'>3.30 PM</p>
                                     <p>17.11.2023</p></td>
-                                <th scope="col" className='text-warning'>Processing <Button variant="outline-danger" size="sm">Cancel</Button></th>
+                                <th scope="col" className='text-warning'><p className='mb-1'>Processing</p> <Button variant="outline-danger" size="sm">Cancel</Button></th>
                             </tr>
                             <tr>
                                 <td>Chicken Fried Rice</td>
