@@ -14,23 +14,9 @@ import Login from "./pages/Login";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [foods, setFoods] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(
     sessionStorage.getItem('isLoggedIn') === 'true'
   );
-  const getFoods = async () => {
-    try {
-      const response = await api.get("/api/foods");
-      setFoods(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getFoods();
-  }, []);
-
   const handleLogin = () => {
     // Your login logic
 

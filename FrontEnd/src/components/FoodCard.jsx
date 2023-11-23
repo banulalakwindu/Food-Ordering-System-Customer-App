@@ -5,7 +5,12 @@ function FoodCard({ foodId, foodImage, foodName, foodPrice }) {
     return (
         <Link className='mx-2 my-2' to={foodId} style={{ width: '350px' }}>
             <Card className=''>
-                <Card.Img variant="top" src={foodImage} />
+                {/* Use backticks for string interpolation */}
+                <Card.Img
+                    variant="top"
+                    style={{ width: '100%', height: "200px", objectFit: 'cover' }}
+                    src={`/src/public/img/Foods/${foodImage}`}
+                />
                 <Card.Body>
                     <Card.Title className='text-warning'>{foodName}</Card.Title>
                     <small>Starting From,</small>

@@ -1,41 +1,38 @@
-import { Card } from 'react-bootstrap';
-import Accordion from 'react-bootstrap/Accordion';
+import React from 'react';
+import { Accordion } from 'react-bootstrap';
 import FoodCard from './FoodCard';
-import ChickenFriedRice from '../public/img/home_bg.jpg';
 
-function FoodPart() {
+function FoodPart({ foods }) {
+    const getUniqueFoodTypes = () => {
+        if (!foods) return [];
+
+        // Extract unique food types from the food data
+        const uniqueTypes = [...new Set(foods.map((food) => food.type))].sort();
+        return uniqueTypes;
+    };
+
     return (
         <Accordion data-bs-theme="dark">
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>Fried Rice</Accordion.Header>
-                <Accordion.Body className='row row-cols-2 mx-auto'>
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Fried Rice" foodPrice="500" />
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-                <Accordion.Header>Koththu</Accordion.Header>
-                <Accordion.Body className='row row-cols-2'>
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-                <Accordion.Header>String Hoppers</Accordion.Header>
-                <Accordion.Body className='row row-cols-2'>
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                    <FoodCard className="col" foodId="100" foodImage={ChickenFriedRice} foodName="Chicken Koththu" foodPrice="500" />
-                </Accordion.Body>
-            </Accordion.Item>
+            {getUniqueFoodTypes().map((type, index) => (
+                <Accordion.Item key={index} eventKey={index.toString()}>
+                    <Accordion.Header>{type}</Accordion.Header>
+                    <Accordion.Body className='row row-cols-2'>
+                        {foods
+                            .filter((food) => food.type === type)
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map((filteredFood) => (
+                                <FoodCard
+                                    key={filteredFood.foodId}
+                                    className="col"
+                                    foodId={filteredFood.foodId}
+                                    foodImage={filteredFood.image}
+                                    foodName={filteredFood.name}
+                                    foodPrice={filteredFood.halfprice}
+                                />
+                            ))}
+                    </Accordion.Body>
+                </Accordion.Item>
+            ))}
         </Accordion>
     );
 }
