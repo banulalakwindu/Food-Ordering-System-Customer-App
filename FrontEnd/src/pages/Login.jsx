@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../public/img/logo.png';
 import { useState } from 'react';
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setUserId }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -15,7 +15,7 @@ const Login = ({ setIsLoggedIn }) => {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/login', {
+            const response = await fetch('http://localhost:8080/api/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,13 +23,15 @@ const Login = ({ setIsLoggedIn }) => {
                 body: JSON.stringify(formData),
             });
 
-            const responseBody = await response.json(); // Assuming the response is JSON
+            const responseBody = await response.json();
+            setUserId(responseBody.userId);
 
             if (responseBody.status === "success") {
                 // Handle successful login
                 setIsLoggedIn(true);
 
-                console.log('Login successful');
+                console.log('User ' + responseBody.userId + ' Login successful');
+                sessionStorage.setItem('userId', responseBody.userId);
 
                 // redirect to home page
                 window.location.href = '/';

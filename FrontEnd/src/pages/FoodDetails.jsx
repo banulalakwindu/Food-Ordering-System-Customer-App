@@ -7,22 +7,100 @@ import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
 import api from '../api/axiosConfig'
 
-const FoodDetails = ({ isLoggedIn }) => {
+const FoodDetails = ({ isLoggedIn, userId }) => {
+    console.log("FoodDetails", isLoggedIn, userId);
     const { foodId } = useParams();
     const [food, setFood] = useState();
-    console.log(food);
+    const [selectedSize, setSelectedSize] = useState("1"); // Default size
+    const [selectedAddons, setSelectedAddons] = useState([]);
+    const [quantity, setQuantity] = useState(1);
+    const [totalPrice, setTotalPrice] = useState(
+        parseFloat(selectedSize === "1" ? food?.halfprice : food?.fullprice).toFixed(2)
+    );
+
     const getFood = async () => {
         try {
             const response = await api.get("/api/foods/" + foodId);
             setFood(response.data);
-            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
     }
+
+    const handleSizeChange = (event) => {
+        const newSize = event.target.value;
+        setSelectedSize(newSize);
+
+        // Recalculate total price
+        calculateTotalPrice(newSize, quantity, selectedAddons);
+    };
+
+    const handleQuantityChange = (event) => {
+        const newQuantity = parseInt(event.target.value, 10);
+        setQuantity(newQuantity);
+
+        // Recalculate total price
+        calculateTotalPrice(selectedSize, newQuantity, selectedAddons);
+    };
+
+    const handleAddonChange = (addon) => {
+        const updatedAddons = selectedAddons.includes(addon)
+            ? selectedAddons.filter((selectedAddon) => selectedAddon !== addon)
+            : [...selectedAddons, addon];
+
+        setSelectedAddons(updatedAddons);
+
+        // Recalculate total price
+        calculateTotalPrice(selectedSize, quantity, updatedAddons);
+    };
+
+    const calculateTotalPrice = (size, qty, addons) => {
+        const basePrice = size === "1" ? food?.halfprice : food?.fullprice;
+        const addonTotal = addons.reduce(
+            (addonSum, selectedAddon) => addonSum + selectedAddon.price * qty,
+            0
+        );
+
+        const newTotalPrice = (qty * parseFloat(basePrice) + addonTotal).toFixed(2);
+        setTotalPrice(newTotalPrice);
+    };
+
+    const handleAddToCart = async () => {
+        // Prepare the cart item data
+        const cartItemData = {
+            cartitemId: Math.floor(Math.random() * 1000000000),
+            foodId: food.foodId,
+            name: food.name,
+            size: selectedSize === "1" ? "Half" : "Full",
+            price: selectedSize === "1" ? food.halfprice : food.fullprice,
+            quantity: quantity,
+            totalPrice: totalPrice,
+            addons: selectedAddons.map(addon => ({
+                name: addon.name,
+                price: addon.price
+            }))
+        };
+
+        // Send a POST request to add to cart
+        try {
+            console.log(cartItemData);
+            const response = await api.post(`/api/user/addToCart/1`, cartItemData);
+            console.log(response);
+            if (response.status === 200) {
+                alert("Added to cart successfully");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+
+    }
+
     useEffect(() => {
         getFood();
     }, []);
+
+    if (!food) return null;
 
     return (
         <div className="bg-dark">
@@ -35,11 +113,10 @@ const FoodDetails = ({ isLoggedIn }) => {
                     <Form data-bs-theme="dark" className="mt-md-0 mt-3 ms-0 ms-md-5 mx-auto">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label className="text-warning">Size</Form.Label>
-                            <Form.Select aria-label="Default select example">
+                            <Form.Select aria-label="Default select example" onChange={handleSizeChange}>
                                 <option value="1">Half - Rs. {food.halfprice}</option>
                                 <option value="2">Full - Rs. {food.fullprice} </option>
                             </Form.Select>
-                            {/* Addons */}
                             <Form.Label className="text-warning mt-4">Addons</Form.Label>
                             {food.addons && food.addons.map((addon, index) => (
                                 <Form.Check
@@ -47,21 +124,26 @@ const FoodDetails = ({ isLoggedIn }) => {
                                     className="text-light"
                                     type="checkbox"
                                     label={`${addon.name} (+Rs.${addon.price})`}
+                                    onChange={() => handleAddonChange(addon)}
                                 />
                             ))}
-                            {/* Quantity */}
                             <Form.Label className="text-warning mt-4">Quantity</Form.Label>
-                            <Form.Control type="number" placeholder="Enter Quantity" min={1} />
-                            <p className="text-warning mt-4">Price: Rs. 450.00</p>
-                            {!isLoggedIn ? (
-                                <Button href="/login" className="btn btn-warning">Login to Buy</Button>
+                            <Form.Control
+                                type="number"
+                                placeholder="Enter Quantity"
+                                min={1}
+                                value={quantity}
+                                onChange={handleQuantityChange}
+                            />
+                            <p className="text-warning mt-4">Price: Rs. {totalPrice}</p>
+                            {isLoggedIn ? (
+                                <Button onClick={handleAddToCart} className="btn btn-warning">Add to Cart</Button>
                             ) : (
-                                <Button className="btn btn-warning">Add to Cart</Button>
+                                <Button href="/login" className="btn btn-warning">Login to Buy</Button>
                             )}
                         </Form.Group>
                     </Form>
                 </div>
-                {/* <p>Food ID: {foodId}</p>*/}
             </div>
         </div>
     );

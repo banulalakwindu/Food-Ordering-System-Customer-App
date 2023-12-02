@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { FaPenToSquare } from "react-icons/fa6";
 
-const Profile = ({ isLoggedIn }) => {
+const Profile = ({ isLoggedIn, userId }) => {
     const [name, setName] = useState('Banula Lakwindu');
     const [phone, setPhone] = useState('0771234567');
     const [address, setAddress] = useState('No. 23, Church Road, Ratnapura');

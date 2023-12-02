@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -25,6 +26,18 @@ public class CartItem {
     private String price;
     private String quantity;
     private String totalPrice;
-    @DocumentReference
     private List<Addon> addons;
+
+    public CartItem(String cartitemId, String foodId, String name, String size, String price, String quantity,
+            String totalPrice, List<Addon> addons) {
+        this.id = new ObjectId(); // or generate a unique ID as per your requirements
+        this.cartitemId = cartitemId;
+        this.foodId = foodId;
+        this.name = name;
+        this.size = size;
+        this.price = price;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.addons = addons;
+    }
 }

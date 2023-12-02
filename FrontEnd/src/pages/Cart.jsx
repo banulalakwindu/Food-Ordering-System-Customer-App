@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
 import { Button } from 'react-bootstrap'
 import { MdDeleteForever } from "react-icons/md";
 import { Form } from 'react-bootstrap'
+import api from '../api/axiosConfig';
 
-const Cart = ({ isLoggedIn }) => {
+const Cart = ({ isLoggedIn, userId }) => {
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+
+                const response = await api.get(`/api/user/${userId}`);
+                setUser(response.data);
+            } catch (error) {
+                console.error('Error fetching user details:', error);
+            }
+        };
+
+        if (isLoggedIn) {
+            fetchUserDetails();
+        }
+    }, [isLoggedIn, userId]);
 
     if (!isLoggedIn) {
         return (
@@ -19,6 +36,11 @@ const Cart = ({ isLoggedIn }) => {
             </div>
         );
     }
+
+    if (!user) return null;
+
+    let overallTotal = 0;
+
     return (
         <div className='bg-dark'>
             <Sidebar isLoggedIn={isLoggedIn} />
@@ -40,36 +62,35 @@ const Cart = ({ isLoggedIn }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input></th>
-                                <td className='d-flex flex-column'>
-                                    <p className='mb-0'>Chicken Fried Rice Full</p>
-                                    <small className='ms-2'>+ Chicken</small>
-                                    <small className='ms-2'>+ Egg</small>
-                                    <small className='ms-2'>+ Prawn</small>
-                                    <small className='ms-2'>+ Fish</small>
-                                </td>
-                                <td>500</td>
-                                <td>2</td>
-                                <td>1000</td>
-                                <th scope="col"><Button variant="outline-danger" size="sm"><MdDeleteForever /></Button></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input></th>
-                                <td>Chicken Fried Rice Half</td>
-                                <td>500</td>
-                                <td>2</td>
-                                <td>1000</td>
-                                <th scope="col"><Button variant="outline-danger" size="sm"><MdDeleteForever /></Button></th>
-                            </tr>
-                            <tr>
-                                <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input></th>
-                                <td>Chicken Fried Rice Full</td>
-                                <td>500</td>
-                                <td>2</td>
-                                <td>1000</td>
-                                <th scope="col"><Button variant="outline-danger" size="sm"><MdDeleteForever /></Button></th>
-                            </tr>
+                            {user.cartitems.map((cartItem) => {
+                                // Calculate the total price for the current cart item, including addons and quantity
+                                const addonTotal = cartItem.addons.reduce(
+                                    (addonSum, addon) => addonSum + addon.price,
+                                    0
+                                );
+                                const itemTotal =
+                                    cartItem.quantity * (cartItem.price + addonTotal);
+
+                                // Add the item total to the overall total
+                                overallTotal += itemTotal;
+
+                                return (
+                                    <tr key={cartItem.id}>
+                                        <th scope="row"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></input></th>
+                                        <td className='d-flex flex-column'>
+                                            <p className='mb-0'>{cartItem.name} {cartItem.size}</p>
+                                            {cartItem.addons.map((addon) => (
+                                                <small key={addon.id} className='ms-2'>+ {addon.name}</small>
+                                            ))}
+                                        </td>
+                                        <td>{cartItem.price}</td>
+                                        <td>{cartItem.quantity}</td>
+                                        <td>{itemTotal}</td>
+                                        <th scope="col"><Button variant="outline-danger" size="sm"><MdDeleteForever /></Button></th>
+                                    </tr>
+                                );
+
+                            })}
                         </tbody>
                     </table>
                     <div className="d-flex flex-column">

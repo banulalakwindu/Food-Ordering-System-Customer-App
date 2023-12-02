@@ -6,7 +6,7 @@ import FoodPart from '../components/FoodPart'
 import { useState, useEffect } from 'react'
 import api from '../api/axiosConfig'
 
-const Foods = ({ isLoggedIn }) => {
+const Foods = ({ isLoggedIn, userId }) => {
     const [foods, setFoods] = useState();
     const getFoods = async () => {
         try {
@@ -27,6 +27,8 @@ const Foods = ({ isLoggedIn }) => {
         const uniqueTypes = [...new Set(foods.map((food) => food.type))];
         return uniqueTypes;
     };
+
+    if (!foods) return null;
 
     return (
         <div className='bg-dark'>

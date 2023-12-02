@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import SidebarSize from "../components/SidebarSize";
 import Logo from "../public/img/logo.png";
 
-const About = ({ isLoggedIn }) => {
+const About = ({ isLoggedIn, userId }) => {
   return (
     <div className='bg-dark'>
       <Sidebar isLoggedIn={isLoggedIn} />

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Addon {
     @Id
-    private ObjectId id;
+    private String id;
     private String name;
     private int price;
 }

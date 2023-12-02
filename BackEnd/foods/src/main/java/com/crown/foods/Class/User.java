@@ -3,6 +3,7 @@ package com.crown.foods.Class;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -24,8 +25,6 @@ public class User {
     private String address;
     private String password;
     private String image;
-    @DocumentReference
     private List<CartItem> cartitems;
-    @DocumentReference
     private List<Order> orders;
 }

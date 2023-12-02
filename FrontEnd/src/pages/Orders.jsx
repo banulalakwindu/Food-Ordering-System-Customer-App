@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar'
 import SidebarSize from '../components/SidebarSize'
 import { Button } from 'react-bootstrap'
 
-const Orders = ({ isLoggedIn }) => {
+const Orders = ({ isLoggedIn, userId }) => {
 
     if (!isLoggedIn) {
         return (

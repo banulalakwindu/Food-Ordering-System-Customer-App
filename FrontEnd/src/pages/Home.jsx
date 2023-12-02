@@ -3,7 +3,8 @@ import FoodCarousel from "../components/FoodCarousel";
 import Logo from "../public/img/logo.png"
 import SidebarSize from "../components/SidebarSize";
 
-const Home = ({ isLoggedIn }) => {
+const Home = ({ isLoggedIn, userId }) => {
+  console.log("Home", isLoggedIn, userId);
   return <div className="d-flex vh-100 home position-relative">
     <Sidebar isLoggedIn={isLoggedIn} />
     <SidebarSize isLoggedIn={isLoggedIn} />
