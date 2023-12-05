@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crown.foods.Class.CartItem;
+import com.crown.foods.Class.Order;
 import com.crown.foods.Class.User;
 import com.crown.foods.Repository.UserRepository;
 
@@ -34,6 +35,31 @@ public class UserService {
         return response;
     }
 
+    public void register(User user) {
+        userRepository.save(user);
+    }
+
+    public void updateUser(String userId, User updatedUser) {
+        // Find the user by userId
+        User existingUser = userRepository.findByUserId(userId);
+
+        if (existingUser != null) {
+            // Update only the fields that are not null in the updatedUser
+            if (updatedUser.getName() != null) {
+                existingUser.setName(updatedUser.getName());
+            }
+            if (updatedUser.getPnumber() != null) {
+                existingUser.setPnumber(updatedUser.getPnumber());
+            }
+            if (updatedUser.getAddress() != null) {
+                existingUser.setAddress(updatedUser.getAddress());
+            }
+
+            // Save the updated user
+            userRepository.save(existingUser);
+        }
+    }
+
     public void addToCart(String userId, CartItem cartItem) {
         // Find the user by userId
         User user = userRepository.findByUserId(userId);
@@ -45,7 +71,40 @@ public class UserService {
         }
     }
 
+    public void addToOrder(String userId, Order order) {
+        // Find the user by userId
+        User user = userRepository.findByUserId(userId);
+
+        // Add the order to the user's orders list
+        if (user != null) {
+            user.getOrders().add(order);
+            userRepository.save(user);
+        }
+    }
+
     public User getUser(String userId) {
         return userRepository.findByUserId(userId);
+    }
+
+    public void deleteCartItem(String userId, String cartItemId) {
+        // Find the user by userId
+        User user = userRepository.findByUserId(userId);
+
+        // Remove the cart item from the user's cartitems list based on cartItemId
+        if (user != null) {
+            user.getCartitems().removeIf(cartItem -> cartItem.getCartitemId().equals(cartItemId));
+            userRepository.save(user);
+        }
+    }
+
+    public void deleteOrder(String userId, String orderId) {
+        // Find the user by userId
+        User user = userRepository.findByUserId(userId);
+
+        // Remove the order from the user's orders list based on orderId
+        if (user != null) {
+            user.getOrders().removeIf(order -> order.getOrderId().equals(orderId));
+            userRepository.save(user);
+        }
     }
 }

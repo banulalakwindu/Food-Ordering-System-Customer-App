@@ -11,6 +11,7 @@ import FoodDetails from "./pages/FoodDetails";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -46,14 +47,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
-        <Route path="/foods" element={<Foods isLoggedIn={isLoggedIn} />} />
+        <Route path="/" element={<Home isLoggedIn={isLoggedIn} userId={userId} />} />
+        <Route path="/foods" element={<Foods isLoggedIn={isLoggedIn} userId={userId} />} />
         <Route path="/foods/:foodId" element={<FoodDetails isLoggedIn={isLoggedIn} userId={userId} />} />
-        <Route path="/about" element={<About isLoggedIn={isLoggedIn} />} />
+        <Route path="/about" element={<About isLoggedIn={isLoggedIn} userId={userId} />} />
         <Route path="/profile" element={<Profile isLoggedIn={isLoggedIn} userId={userId} />} />
         <Route path="/cart" element={<Cart isLoggedIn={isLoggedIn} userId={userId} />} />
         <Route path="/login" element={<Login setIsLoggedIn={handleLogin} setUserId={setUserId} />} />
         <Route path="/orders" element={<Orders isLoggedIn={isLoggedIn} userId={userId} />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>

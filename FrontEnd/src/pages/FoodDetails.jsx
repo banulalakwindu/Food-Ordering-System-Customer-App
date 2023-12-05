@@ -8,7 +8,6 @@ import SidebarSize from '../components/SidebarSize'
 import api from '../api/axiosConfig'
 
 const FoodDetails = ({ isLoggedIn, userId }) => {
-    console.log("FoodDetails", isLoggedIn, userId);
     const { foodId } = useParams();
     const [food, setFood] = useState();
     const [selectedSize, setSelectedSize] = useState("1"); // Default size
@@ -18,10 +17,31 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
         parseFloat(selectedSize === "1" ? food?.halfprice : food?.fullprice).toFixed(2)
     );
 
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+
+                const response = await api.get(`/api/user/${userId}`);
+                setUser(response.data);
+
+            } catch (error) {
+                console.error('Error fetching user details:', error);
+            }
+        };
+
+        if (isLoggedIn) {
+            fetchUserDetails();
+        }
+    }, [isLoggedIn, userId, user]);
+
+    const [addonTotal, setAddonTotal] = useState(0);
+
     const getFood = async () => {
         try {
             const response = await api.get("/api/foods/" + foodId);
             setFood(response.data);
+            calculateTotalPrice(selectedSize, quantity, selectedAddons);
         } catch (error) {
             console.log(error);
         }
@@ -56,12 +76,13 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
 
     const calculateTotalPrice = (size, qty, addons) => {
         const basePrice = size === "1" ? food?.halfprice : food?.fullprice;
-        const addonTotal = addons.reduce(
-            (addonSum, selectedAddon) => addonSum + selectedAddon.price * qty,
+        const addonTotal1 = addons.reduce(
+            (addonSum, selectedAddon) => addonSum + selectedAddon.price,
             0
         );
+        setAddonTotal(addonTotal1 + parseFloat(basePrice));
 
-        const newTotalPrice = (qty * parseFloat(basePrice) + addonTotal).toFixed(2);
+        const newTotalPrice = (qty * (parseFloat(basePrice) + addonTotal1).toFixed(2));
         setTotalPrice(newTotalPrice);
     };
 
@@ -72,7 +93,7 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
             foodId: food.foodId,
             name: food.name,
             size: selectedSize === "1" ? "Half" : "Full",
-            price: selectedSize === "1" ? food.halfprice : food.fullprice,
+            price: addonTotal,
             quantity: quantity,
             totalPrice: totalPrice,
             addons: selectedAddons.map(addon => ({
@@ -84,7 +105,7 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
         // Send a POST request to add to cart
         try {
             console.log(cartItemData);
-            const response = await api.post(`/api/user/addToCart/1`, cartItemData);
+            const response = await api.post(`/api/user/addToCart/${user.userId}`, cartItemData);
             console.log(response);
             if (response.status === 200) {
                 alert("Added to cart successfully");
@@ -100,12 +121,24 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
         getFood();
     }, []);
 
-    if (!food) return null;
+    useEffect(() => {
+        calculateTotalPrice(selectedSize, quantity, selectedAddons);
+    }, [food, selectedSize, quantity, selectedAddons]);
+
+    if (!food) return (
+        <div className='bg-dark d-flex'>
+            <Sidebar isLoggedIn={isLoggedIn} user={user} />
+            <SidebarSize isLoggedIn={isLoggedIn} user={user} />
+            <div className="d-flex flex-column p-5 text-center m-auto ">
+                <h2 className='mx-auto text-white mt-auto mb-4'>Loading...</h2>
+            </div>
+        </div>
+    );
 
     return (
         <div className="bg-dark">
-            <Sidebar isLoggedIn={isLoggedIn} />
-            <SidebarSize isLoggedIn={isLoggedIn} />
+            <Sidebar isLoggedIn={isLoggedIn} user={user} />
+            <SidebarSize isLoggedIn={isLoggedIn} user={user} />
             <div className="right-side d-flex flex-column ms-5 pt-5 ps-0 ps-xl-5">
                 <h2 className="text-warning mb-4 ms-xl-5 mx-auto">{food.name}</h2>
                 <div className="d-flex flex-md-row flex-column ms-xl-5">
@@ -132,6 +165,7 @@ const FoodDetails = ({ isLoggedIn, userId }) => {
                                 type="number"
                                 placeholder="Enter Quantity"
                                 min={1}
+                                max={10}
                                 value={quantity}
                                 onChange={handleQuantityChange}
                             />

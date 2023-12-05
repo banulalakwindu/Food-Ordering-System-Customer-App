@@ -7,25 +7,7 @@
         "address": "104/2/B, Pitakumbura Rd, Gonakumbura, Ratnapura",
         "password": "ABCD1234",
         "image": "banu.jpg",
-        "cartitems": [
-            {
-                "cartitemId": "1",
-                "foodId": "1",
-                "name": "Chicken Fried Rice",
-                "type": "Fried Rice",
-                "quantity": 2,
-                "addons": [
-                    {
-                        "name": "Chicken",
-                        "price": "50"
-                    },
-                    {
-                        "name": "Egg",
-                        "price": "30"
-                    }
-                ]
-            }
-        ],
+        "cartitems": [],
         "orders": [
             {
                 "orderId": "1",

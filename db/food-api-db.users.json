@@ -1,0 +1,231 @@
+[
+  {
+    "_id": {
+      "$oid": "6569f46f15676b638503fe34"
+    },
+    "userId": "1",
+    "name": "Banula Lakwindu",
+    "username": "banulalakwindu10@gmail.com",
+    "pnumber": "0702686990",
+    "address": "104/2/B, Pitakumbura Rd, Gonakumbura, Ratnapura",
+    "password": "ABCD1234",
+    "image": "banu.jpg",
+    "cartitems": [
+      {
+        "cartitemId": "475509900",
+        "foodId": "food3",
+        "name": "Chicken Kottu",
+        "size": "Half",
+        "price": "530",
+        "quantity": "1",
+        "totalPrice": "530",
+        "addons": [
+          {
+            "name": "Fish",
+            "price": 70
+          },
+          {
+            "name": "Prawn",
+            "price": 80
+          },
+          {
+            "name": "Egg",
+            "price": 30
+          },
+          {
+            "name": "Chicken",
+            "price": 50
+          }
+        ]
+      },
+      {
+        "cartitemId": "664306156",
+        "foodId": "food3",
+        "name": "Chicken Kottu",
+        "size": "Full",
+        "price": "580",
+        "quantity": "5",
+        "totalPrice": "2900",
+        "addons": [
+          {
+            "name": "Chicken",
+            "price": 50
+          },
+          {
+            "name": "Prawn",
+            "price": 80
+          }
+        ]
+      }
+    ],
+    "orders": [
+      {
+        "orderId": "12345",
+        "total": "1500",
+        "orderTime": "2023-01-01T12:00:00",
+        "status": "Completed",
+        "orderItems": [
+          {
+            "name": "Burger",
+            "quantity": "2",
+            "size": "Large",
+            "addons": [
+              "Cheese",
+              "Bacon"
+            ]
+          },
+          {
+            "name": "Pizza",
+            "quantity": "1",
+            "size": "Medium",
+            "addons": [
+              "Olives",
+              "Mushrooms"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "747894422",
+        "total": "3050",
+        "orderTime": "2023-12-03T16:51:58.066Z",
+        "status": "Completed",
+        "orderItems": [
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Fish",
+              "Prawn",
+              "Egg",
+              "Chicken"
+            ]
+          },
+          {
+            "name": "Chicken Fried Rice",
+            "quantity": "3",
+            "size": "Half",
+            "addons": [
+              "Fish"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "933686083",
+        "total": "1060",
+        "orderTime": "2023-12-03T17:19:50.547Z",
+        "status": "Completed",
+        "orderItems": [
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Fish",
+              "Prawn",
+              "Egg",
+              "Chicken"
+            ]
+          },
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Egg"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "103942041",
+        "total": "2290",
+        "orderTime": "2023-12-03T17:23:27.896Z",
+        "status": "Completed",
+        "orderItems": [
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Chicken",
+              "Egg",
+              "Prawn",
+              "Fish"
+            ]
+          },
+          {
+            "name": "Chicken Fried Rice",
+            "quantity": "3",
+            "size": "Half",
+            "addons": [
+              "Fish"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "945214245",
+        "total": "430",
+        "orderTime": "2023-12-03T17:24:56.229Z",
+        "status": "Delivering",
+        "orderItems": [
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Egg"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "745313805",
+        "total": "1660",
+        "orderTime": "2023-12-03T17:28:25.007Z",
+        "status": "Processing",
+        "orderItems": [
+          {
+            "name": "Chicken Fried Rice",
+            "quantity": "3",
+            "size": "Half",
+            "addons": [
+              "Fish"
+            ]
+          }
+        ]
+      },
+      {
+        "orderId": "40126576",
+        "total": "1060",
+        "orderTime": "2023-12-05T05:03:30.055Z",
+        "status": "Processing",
+        "orderItems": [
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Chicken",
+              "Egg",
+              "Prawn",
+              "Fish"
+            ]
+          },
+          {
+            "name": "Chicken Kottu",
+            "quantity": "1",
+            "size": "Half",
+            "addons": [
+              "Egg"
+            ]
+          }
+        ]
+      }
+    ],
+    "_class": "com.crown.foods.Class.User"
+  }
+]

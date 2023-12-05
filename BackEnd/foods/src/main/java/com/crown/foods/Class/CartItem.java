@@ -30,7 +30,7 @@ public class CartItem {
 
     public CartItem(String cartitemId, String foodId, String name, String size, String price, String quantity,
             String totalPrice, List<Addon> addons) {
-        this.id = new ObjectId(); // or generate a unique ID as per your requirements
+        this.id = new ObjectId();
         this.cartitemId = cartitemId;
         this.foodId = foodId;
         this.name = name;

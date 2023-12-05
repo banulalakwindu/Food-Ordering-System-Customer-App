@@ -22,4 +22,13 @@ public class Order {
     private String orderTime;
     private String status;
     private List<OrderItem> orderItems;
+
+    public Order(String orderId, String total, String orderTime, String status, List<OrderItem> orderItems) {
+        this.id = new ObjectId();
+        this.orderId = orderId;
+        this.total = total;
+        this.orderTime = orderTime;
+        this.status = status;
+        this.orderItems = orderItems;
+    }
 }

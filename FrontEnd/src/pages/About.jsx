@@ -2,12 +2,31 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import SidebarSize from "../components/SidebarSize";
 import Logo from "../public/img/logo.png";
+import { useEffect, useState } from "react";
+import api from "../api/axiosConfig";
 
 const About = ({ isLoggedIn, userId }) => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+
+        const response = await api.get(`/api/user/${userId}`);
+        setUser(response.data);
+
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchUserDetails();
+    }
+  }, [isLoggedIn, userId]);
   return (
     <div className='bg-dark'>
-      <Sidebar isLoggedIn={isLoggedIn} />
-      <SidebarSize isLoggedIn={isLoggedIn} />
+      <Sidebar isLoggedIn={isLoggedIn} user={user} />
+      <SidebarSize isLoggedIn={isLoggedIn} user={user} />
       <div className="right-side d-flex flex-column text-warning ms-md-5 me-md-4">
         <h1 className="mx-auto mt-5">About Us</h1>
         <img src={Logo} width={200} height={200} alt="logo" className="mx-auto mt-4" />

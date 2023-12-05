@@ -2,12 +2,32 @@ import Sidebar from "../components/Sidebar";
 import FoodCarousel from "../components/FoodCarousel";
 import Logo from "../public/img/logo.png"
 import SidebarSize from "../components/SidebarSize";
+import { useEffect, useState } from "react";
+import api from "../api/axiosConfig";
 
 const Home = ({ isLoggedIn, userId }) => {
-  console.log("Home", isLoggedIn, userId);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+
+        const response = await api.get(`/api/user/${userId}`);
+        setUser(response.data);
+
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchUserDetails();
+    }
+  }, [isLoggedIn, userId]);
+
+
   return <div className="d-flex vh-100 home position-relative">
-    <Sidebar isLoggedIn={isLoggedIn} />
-    <SidebarSize isLoggedIn={isLoggedIn} />
+    <Sidebar isLoggedIn={isLoggedIn} user={user} />
+    <SidebarSize isLoggedIn={isLoggedIn} user={user} />
     <div className="d-flex flex-column bg-dark w-100 right-side">
       <div className="d-flex flex-column  mb-2 align-items-center justify-content-around vh-100" >
         <div className="d-flex mt-sm-5 flex-sm-row flex-column align-items-center">
