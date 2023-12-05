@@ -22,8 +22,11 @@ We have developed a user-friendly web application for Crown Tea Lounge to addres
 ![picture_1](wireframes/Picture1.png)
 ![picture_2](wireframes/Picture2.png)
 ![picture_4](wireframes/Picture4.png)
+![picture_13](wireframes/Picture13.png)
 ![picture_8](wireframes/Picture8.png)
 ![picture_9](wireframes/Picture9.png)
 ![picture_10](wireframes/Picture10.png)
+![picture_11](wireframes/Picture11.png)
+![picture_12](wireframes/Picture12.png)
 
 Feel free to contribute and improve this food ordering system. Your feedback is valuable! 🙌
