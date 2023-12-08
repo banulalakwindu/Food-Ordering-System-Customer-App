@@ -1,0 +1,24 @@
+_id,foodId,name,type,image,halfprice,fullprice,addons[0].name,addons[1].name,addons[2].name,addons[3].name,addons[0].price,addons[1].price,addons[2].price,addons[3].price
+655797857ce000cd0a9016d6,food1,Chicken Fried Rice,Fried Rice,chicken_fried_rice.jpg,450,600,Soy Sauce,Mixed Vegetables,Fried Chicken Strips,Spring Onions,50,30,80,70
+655797857ce000cd0a9016d7,food2,Seafood Fried Rice,Fried Rice,seafood_fried_rice.jpg,600,800,Soy Sauce,Mixed Vegetables,Prawn,Fish,50,30,80,70
+655797857ce000cd0a9016d8,food3,Vegetable Fried Rice,Fried Rice,vegetable_fried_rice.jpg,300,450,Chilli Paste,Vegetable salad,Cucumber ,Onion,30,60,40,30
+655797857ce000cd0a9016d9,food4,Chicken Rotti Kottu,Rotti Kottu,chicken_kottu.jpg,500,750,Chicken,Egg,Mixed Seafood,Fish,50,30,80,70
+655797857ce000cd0a901610,food5,Seafood Rotti Kottu,Rotti Kottu,seafood_kottu.jpg,650,850,Prawn,Fish,Mixed Vegetables,Egg,50,30,80,70
+655797857ce000cd0a901611,food6,Vegetable Rotti Kottu,Rotti Kottu,vegetable_kottu.jpg,350,500,Chilli Paste,Vegetable salad,Cucumber ,Onion,30,60,40,30
+655797857ce000cd0a901612,food7,Chicken Idiyappa Kottu,Idiyappa Kottu,chicken_idiyappa_kottu.jpg,500,750,Chicken,Egg,Prawn,Fish,50,30,80,70
+655797857ce000cd0a901613,food8,Seafood Idiyappa Kottu,Idiyappa Kottu,seafood_idiyappa_kottu.jpg,650,850,Prawn,Fish,Mixed Vegetables,Egg,50,30,80,70
+655797857ce000cd0a901614,food9,Vegetable Idiyappa Kottu,Idiyappa Kottu,vegetable_idiyappa_kottu.jpg,350,500,Chilli Paste,Vegetable salad,Cucumber ,Onion,30,60,40,30
+655797857ce000cd0a901615,food10,Chicken Rice,Rice,chicken_rice.jpg,250,450,Soy Sauce,Mixed Vegetables,Fried Chicken Strips,Spring Onions,50,30,80,70
+655797857ce000cd0a901616,food11,Fish Rice,Rice,fish_rice.jpg,250,450,Soy Sauce,Mixed Vegetables,Fried Chicken Strips,Spring Onions,50,30,80,70
+655797857ce000cd0a901617,food12,Vegetable Rice,Rice,vegetable_rice.jpg,200,350,Chilli Paste,Vegetable salad,Cucumber ,Vegetable Curry,30,60,40,70
+655797857ce000cd0a901618,food13,Chicken Soup,Soup,chicken_soup.jpg,300,400,Extra Chicken,Noodles,Mixed Vegetables,,70,30,30,
+655797857ce000cd0a901619,food14,Vegetable Soup,Soup,vegetable_soup.jpg,200,300,Beans,Carrots,Corn,,30,30,30,
+655797857ce000cd0a901620,food15,Beef Soup,Soup,beef_soup.jpg,300,400,Beef Strip,Noodles,Mixed Vegetables,,70,30,30,
+655797857ce000cd0a901621,food16,Corn Soup,Soup,corn_soup.jpg,250,350,Corn Kernels,Spring Onions,,,30,30,,
+655797857ce000cd0a901622,food17,Tomato Soup,Soup,tomato_soup.jpg,200,300,Basil,Croutons,,,30,30,,
+655797857ce000cd0a901623,food18,Watalappam,Dessert,watalappam.jpg,250,350,Cashew Nuts,Cardamom,Jaggery Drizzle,,100,40,50,
+655797857ce000cd0a901624,food19,Buffalo Curd,Dessert,buffalo_curd.jpg,150,250,Honey,Mixed Berries,Granola,,30,60,30,
+655797857ce000cd0a901625,food20,Jaggery Pudding,Dessert,jaggery_pudding.jpg,300,350,Almonds,Raisins,Cinnamon Sprinkle,,100,50,30,
+655797857ce000cd0a901626,food21,Avacado Cream,Dessert,avacado_cream.jpg,300,400,Coconut Flakes,Chocolate Drizzle,Chopped Nuts,,50,70,100,
+655797857ce000cd0a901627,food22,Kithul flour Pudding,Dessert,kithul_pudding.jpg,300,350,Kithul Treacle,Sliced Bananas,Roasted Coconut,,80,60,50,
+655797857ce000cd0a901628,food23,Sago Pudding,Dessert,sago_pudding.jpg,300,350,Mango Puree,Passion Fruit,Mint Leaves,,60,50,30,

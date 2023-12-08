@@ -1,0 +1,4 @@
+_id,foodId,name,type,image,halfprice,fullprice,addons[0].name,addons[1].name,addons[2].name,addons[3].name,addons[0].price,addons[1].price,addons[2].price,addons[3].price
+655797857ce000cd0a9016d6,food1,Chicken Fried Rice,Fried Rice,chicken_fried_rice.jpg,450,600,Chicken,Egg,Prawn,,50,30,80,
+655797857ce000cd0a9016d7,food2,Vegetable Fried Rice,Fried Rice,vegetable_fried_rice.jpg,300,450,Chicken,Egg,Prawn,Fish,50,30,80,70
+655797857ce000cd0a9016d8,food3,Chicken Kottu,Kottu,chicken_kottu.jpg,300,450,Chicken,Egg,Prawn,Fish,50,30,80,70
